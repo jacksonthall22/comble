@@ -1,0 +1,82 @@
+:root {
+    /* https://coolors.co/fde8e9-d52941-7be0ad-596475-1f2232 */
+
+    /* CSS HEX */
+    --misty-rose: #fde8e9ff;
+    --rusty-red: #d52941ff;
+    --celadon: #7be0adff;
+    --paynes-gray: #596475ff;
+    --raisin-black: #1f2232ff;
+}
+
+body {
+    background-color: var(--raisin-black);
+}
+
+/*#wrapper {*/
+/*    width: 100vw;*/
+/*    height: 100vh;*/
+/*    display: block;*/
+/*}*/
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#dot-grid {
+    background-color: var(--paynes-gray);
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /*grid-gap: 20px;*/
+    /*padding: 5px;*/
+}
+
+.dot {
+    background-color: var(--misty-rose);
+    width: 20%;
+    height: 20%;
+    margin: auto;
+    border-radius: 50%;
+    /*margin: 10px;*/
+}
+
+.grabbable {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+/* (Optional) Apply a "closed-hand" cursor during drag operation. */
+.grabbable:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+@keyframes dot-selected-flash {
+    0% {
+        transform: scale(100%);
+    }
+    10%, 20% {
+        transform: scale(120%);
+    }
+    100% {
+        transform: scale(100%);
+    }
+}
+.dot:focus {
+    animation: dot-selected-flash 3s;
+    animation-iteration-count: 1;
+}
+.dot:active {
+    animation: none;
+}
