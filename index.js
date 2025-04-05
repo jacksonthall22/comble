@@ -1,49 +1,33 @@
 console.log('Script loaded!');
-
-const pinSequence: number[] = [1, 2, 3, 5, 9];
-const userSequence: number[] = [];
-
-function dotNumberFromId(id: string): number {
+const pinSequence = [1, 2, 3, 5, 9];
+const userSequence = [];
+function dotNumberFromId(id) {
     return parseInt(id.split('-')[1]);
 }
-
-function dotMouseDown(e: HTMLDivElement) {
+function dotMouseDown(e) {
     console.log('Starting new sequence:');
-
     const n = dotNumberFromId(e.id);
     if (userSequence.includes(n)) {
-        return
+        return;
     }
-
     userSequence.push(n);
     console.log(n);
 }
-
-function dotMouseEnter(e: HTMLDivElement) {
+function dotMouseEnter(e) {
     if (userSequence.length == 0) {
         return;
     }
-
     const n = dotNumberFromId(e.id);
     if (userSequence.includes(n)) {
-        return
+        return;
     }
-
     userSequence.push(n);
     console.log(n);
 }
-
-window.addEventListener('mouseup', function(event) {
+window.addEventListener('mouseup', function (event) {
     if (userSequence.length == 0) {
         return;
     }
-
     console.log('ended sequence: ' + userSequence);
     userSequence.length = 0;
 });
-//
-//
-// var canvas = document.getElementById("myCanvas") as HTMLCanvasElement;
-// var ctx = canvas.getContext("2d");
-// ctx.fillStyle = "#FF0000";
-// ctx.fillRect(0, 0, 150, 75);
